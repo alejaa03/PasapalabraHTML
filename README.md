@@ -1,2 +1,2 @@
 # PasapalabraHTML
-Pasapalbra JS + CSS + HTML
+Pasapalabra JS + CSS + HTML
