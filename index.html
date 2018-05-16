@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pasapalabra</title>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<header class="title">
+		<h1>Pasapalabra</h1>
+	</header>
+	<article class="pasapalabra">
+		<div class="questions">
+			<h2 id="question"></h2>
+			<input id="generalInput" type="text" placeholder="Enter your name" value="">
+			<button type="button" id="startButton" onclick="start()">START!</button>
+			<button type="button" id="confirmButton" class="ingameButton hidden" onclick="play()">OK</button>
+			<button type="button" id="skipButton" class="ingameButton hidden" onclick="skip()">Pasapalabra</button>
+			<button type="button" id="endButton" class="ingameButton hidden" onclick="endGame()">END</button>
+			<button type="button" id="playAgainButton" class="endgameButton hidden" onclick="playAgain()">Play again!</button>
+		</div>
+	</article>
+	<footer class="footer">
+		<h5></h5>
+	</footer>
+	<script src="app/app.js" charset="utf-8"></script>
+</body>
+</html>
