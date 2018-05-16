@@ -31,6 +31,7 @@
     return questions;
     };
     var questions = backup();
+    var totalQuestions = questions.length;
   var scoreboard = [{
         player: "SmartGuy",
         score: 27
@@ -47,13 +48,20 @@
       var ranking = scoreboard.sort(function(a, b) {
           return b.score - a.score
       }).map(function(top, index) {
-          return (index + 1) + ': ' + top.player + ' => Points: ' + top.score + "\n"
+          return (index + 1) + ': ' + top.player + ' => Points: ' + top.score;
       });
-      alert(ranking.join("\n"));
+      //alert(ranking.join("\n"));
+      console.log(ranking.length)
+      for (var i = 0; i < ranking.length; i++) {
+        var li = document.createElement("li");
+        li.innerHTML = ranking[i]
+        document.getElementById("ranking").appendChild(li)
+      }
+      //console.log(ranking);
   }
 
   function checkRosco(){
-    if(count != 27){
+    if(count != totalQuestions){
       document.getElementById("question").innerHTML = questions[count].question
     }else{
       endGame();
@@ -70,7 +78,7 @@
       if (element.status == -1) ++wAnswered;
     })
     alert("You ended the game!" + "\n" + "Questions answered: " + qAnswered + "\n" + "Wrong answers: " + wAnswered + "\n" + "Correct answers: " + cAnswered);
-    if (count = 27){
+    if (count = totalQuestions){
       scoreboard.push({
         player: playerName,
         score: cAnswered
@@ -92,6 +100,7 @@
 
 
   var count = 0;
+  var questionsToGo = totalQuestions;
   //w
   var playerName = undefined;
   function start(){
@@ -116,7 +125,7 @@
       questions[count].status = -1;
     }
     ++count;
-    //-
+    --questionsToGo;
     checkRosco();
   }
 
@@ -131,6 +140,7 @@
     document.getElementById("playAgainButton").classList.add("hidden");
     document.getElementById("generalInput").placeholder = "Enter your name";
     document.getElementById("question").innerHTML = "";
+    document.getElementById("ranking").classList.add("hidden");
     count = 0;
     questions = backup();
   }
