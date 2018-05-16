@@ -1,5 +1,5 @@
-
-  var questions = [
+  function backup(){
+    var questions = [
     {id: 0 , letter: "a", answer: "abducir", status: 0, question: ("CON LA A. Dicho de una supuesta criatura extraterrestre: Apoderarse de alguien") },
     {id: 1 , letter: "b", answer: "bingo", status: 0, question: ("CON LA B. Juego que ha sacado de quicio a todos los 'Skylabers' en las sesiones de precurso") },
     {id: 2 , letter: "c", answer: "churumbel", status: 0, question: ("CON LA C. Niño, crío, bebé") },
@@ -28,6 +28,9 @@
     {id: 25, letter: "y", answer: "peyote", status: 0, question: ("CONTIENE LA Y. Pequeño cáctus conocido por sus alcaloides psicoactivos utilizado de forma ritual y medicinal por indígenas americanos") },
     {id: 26, letter: "z", answer: "zen", status: 0, question: ("CON LA Z. Escuela de budismo que busca la experiencia de la sabiduría más allá del discurso racional") },
   ]
+    return questions;
+    };
+    var questions = backup();
   var scoreboard = [{
         player: "SmartGuy",
         score: 27
@@ -129,4 +132,5 @@
     document.getElementById("generalInput").placeholder = "Enter your name";
     document.getElementById("question").innerHTML = "";
     count = 0;
+    questions = backup();
   }
