@@ -43,6 +43,29 @@
   ];
 
 
+  /*
+  *
+  *   Keybinding settings
+  *
+  */
+
+    document.getElementById('generalInput').addEventListener("keyup", function(event){
+      event.preventDefault();
+      if(event.keyCode === 13){
+        document.getElementById('confirmButton').click();
+      }
+      else if (event.keyCode === 32){
+        document.getElementById('skipButton').click();
+        document.getElementById('generalInput').value = '';
+      }
+    });
+
+
+/*
+*
+*
+*
+*/
 
   function showRanking() {
       var ranking = scoreboard.sort(function(a, b) {
@@ -58,6 +81,7 @@
         document.getElementById("ranking").appendChild(li)
       }
       //console.log(ranking);
+      document.getElementById("ranking").classList.remove("hidden");
   }
 
   function checkRosco(){
@@ -96,6 +120,7 @@
       elements[i].classList.add("hidden");
     }
     document.getElementById("playAgainButton").classList.remove("hidden");
+    document.getElementById("generalInput").classList.add("hidden");
     results();
     }
 
@@ -105,11 +130,19 @@
   //w
   var playerName = undefined;
 
+
+  function getName(){
+    playerName = document.getElementById("nameInput").value;
+    document.getElementById("nameInput").classList.add("hidden");
+    document.getElementById("nameInput").value = "";
+    document.getElementById("generalInput").classList.remove("hidden");
+
+  }
+
   function start(){
+    getName();
     document.getElementsByClassName('item')[questions[count].id].classList.add("currentlyAsked");
-    playerName = document.getElementById("generalInput").value;
     document.getElementById("generalInput").value = "";
-    document.getElementById("generalInput").placeholder = "Enter answer"
     document.getElementById("startButton").classList.add("hidden");
     var elements = document.getElementsByClassName("ingameButton");
     for (var i = 0; i < elements.length; i++) {
@@ -117,31 +150,9 @@
     }
 
     document.getElementById("question").innerHTML = questions[0].question;
+}
 
 
-    /*
-    *
-    *   Keybinding settings
-    *
-    */
-
-      document.getElementById('generalInput').addEventListener("keyup", function(event){
-        event.preventDefault();
-        if(event.keyCode === 13){
-          document.getElementById('confirmButton').click();
-        }
-        else if (event.keyCode === 32){
-          document.getElementById('skipButton').click();
-          document.getElementById('generalInput').value = '';
-        }
-      });
-  }
-
-  /*
-  *
-  *
-  *
-  */
 
   function play(){
     document.getElementsByClassName('item')[questions[count].id].classList.remove("currentlyAsked");
@@ -170,13 +181,16 @@
   function playAgain(){
     document.getElementById("startButton").classList.remove("hidden");
     document.getElementById("playAgainButton").classList.add("hidden");
-    document.getElementById("generalInput").placeholder = "Enter your name";
+    document.getElementById("nameInput").classList.remove("hidden");
+    document.getElementById("generalInput").classList.add("hidden");
     document.getElementById("question").innerHTML = "";
     document.getElementById("ranking").classList.add("hidden");
     for (var i = 0; i < document.getElementsByClassName('item').length; i++) {
       document.getElementsByClassName('item')[i].classList.remove("wrongAnswered");
       document.getElementsByClassName('item')[i].classList.remove("rightAnswered");
+      document.getElementsByClassName('item')[i].classList.remove("currentlyAsked");
     }
     count = 0;
     questions = backup();
+    document.getElementById("ranking").innerHTML = "";
   }
