@@ -63,6 +63,7 @@
   function checkRosco(){
     if(count != totalQuestions){
       document.getElementById("question").innerHTML = questions[count].question
+      document.getElementsByClassName('item')[questions[count].id].classList.add("currentlyAsked");
     }else{
       endGame();
     }
@@ -77,7 +78,7 @@
       if (element.status == 1) ++cAnswered;
       if (element.status == -1) ++wAnswered;
     })
-    alert("You ended the game!" + "\n" + "Questions answered: " + qAnswered + "\n" + "Wrong answers: " + wAnswered + "\n" + "Correct answers: " + cAnswered);
+    //alert("You ended the game!" + "\n" + "Questions answered: " + qAnswered + "\n" + "Wrong answers: " + wAnswered + "\n" + "Correct answers: " + cAnswered);
     if (count = totalQuestions){
       scoreboard.push({
         player: playerName,
@@ -103,33 +104,64 @@
   var questionsToGo = totalQuestions;
   //w
   var playerName = undefined;
+
   function start(){
-  playerName = document.getElementById("generalInput").value;
-  document.getElementById("generalInput").value = "";
-  document.getElementById("generalInput").placeholder = "Enter answer"
-  document.getElementById("startButton").classList.add("hidden");
-  var elements = document.getElementsByClassName("ingameButton");
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].classList.remove("hidden");
+    document.getElementsByClassName('item')[questions[count].id].classList.add("currentlyAsked");
+    playerName = document.getElementById("generalInput").value;
+    document.getElementById("generalInput").value = "";
+    document.getElementById("generalInput").placeholder = "Enter answer"
+    document.getElementById("startButton").classList.add("hidden");
+    var elements = document.getElementsByClassName("ingameButton");
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].classList.remove("hidden");
+    }
+
+    document.getElementById("question").innerHTML = questions[0].question;
+
+
+    /*
+    *
+    *   Keybinding settings
+    *
+    */
+
+      document.getElementById('generalInput').addEventListener("keyup", function(event){
+        event.preventDefault();
+        if(event.keyCode === 13){
+          document.getElementById('confirmButton').click();
+        }
+        else if (event.keyCode === 32){
+          document.getElementById('skipButton').click();
+          document.getElementById('generalInput').value = '';
+        }
+      });
   }
 
-  document.getElementById("question").innerHTML = questions[0].question;
-}
+  /*
+  *
+  *
+  *
+  */
 
   function play(){
+    document.getElementsByClassName('item')[questions[count].id].classList.remove("currentlyAsked");
     var userAnswer = document.getElementById("generalInput").value;
     document.getElementById("generalInput").value = "";
     if (userAnswer.toLowerCase() == questions[count].answer){
       questions[count].status = 1;
+      document.getElementsByClassName('item')[questions[count].id].classList.add("rightAnswered");
     }else{
       questions[count].status = -1;
+      document.getElementsByClassName('item')[questions[count].id].classList.add("wrongAnswered");
     }
     ++count;
     --questionsToGo;
+    //console.log("DEBUG ID: " + questions[count].id)
     checkRosco();
   }
 
   function skip(){
+    document.getElementsByClassName('item')[questions[count].id].classList.remove("currentlyAsked");
     var skipped = questions.splice(count,1)[0]
     questions.push(skipped);
     checkRosco();
@@ -141,6 +173,10 @@
     document.getElementById("generalInput").placeholder = "Enter your name";
     document.getElementById("question").innerHTML = "";
     document.getElementById("ranking").classList.add("hidden");
+    for (var i = 0; i < document.getElementsByClassName('item').length; i++) {
+      document.getElementsByClassName('item')[i].classList.remove("wrongAnswered");
+      document.getElementsByClassName('item')[i].classList.remove("rightAnswered");
+    }
     count = 0;
     questions = backup();
   }

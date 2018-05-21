@@ -4,3 +4,43 @@
 .ingameButton{
 
 }
+
+.ui{
+background-color: DodgerBlue;
+height: auto;
+
+
+}
+.letters{
+  text-align: center;
+
+}
+.letters li{
+  display: inline-block;
+  list-style: none;
+  padding: 20px;
+  margin: 20px;
+  background-color: #f1f1f1;
+  width: 90px;
+  height: 200px;
+  line-height: 140px;
+}
+
+.letters .wrongAnswered{
+  background-color: red;
+}
+
+.letters .rightAnswered{
+  background-color: green;
+}
+
+.currentlyAsked{
+  animation: blink2 1s step-end infinite alternate;
+  border: 5px solid transparent;
+}
+
+@keyframes blink2 {
+  50% {
+    border-color: purple;
+  }
+}
