@@ -214,5 +214,6 @@
     questionsToGo = questions.length;
     stopTimer = false;
     document.getElementById("ranking").innerHTML = "";
-    document.getElementById("countDown").innerHTML = "130";
+    document.getElementById("countDown").innerHTML = 130;
+    document.getElementById("questionsLeft").innerHTML = 27;
   }
