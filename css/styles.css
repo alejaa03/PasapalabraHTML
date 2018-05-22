@@ -5,6 +5,11 @@
 
 }
 
+.timer li{
+  list-style: none;
+  font-size: 40px;
+}
+
 .ui{
 background-color: DodgerBlue;
 height: auto;
