@@ -103,7 +103,7 @@
       if (element.status == -1) ++wAnswered;
     })
     //alert("You ended the game!" + "\n" + "Questions answered: " + qAnswered + "\n" + "Wrong answers: " + wAnswered + "\n" + "Correct answers: " + cAnswered);
-    if (count = totalQuestions){
+    if (questionsToGo == 0){
       scoreboard.push({
         player: playerName,
         score: cAnswered
@@ -192,5 +192,6 @@
     }
     count = 0;
     questions = backup();
+    questionsToGo = questions.length;
     document.getElementById("ranking").innerHTML = "";
   }
