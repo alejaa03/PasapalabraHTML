@@ -114,6 +114,7 @@
 
   function endGame(){
     //console.log("JUST A MARKER")
+    stopTimer = true;
     document.getElementById("question").innerHTML = "DONE!"
     var elements = document.getElementsByClassName("ingameButton");
     for (var i = 0; i < elements.length; i++) {
@@ -129,6 +130,7 @@
   var questionsToGo = totalQuestions;
   //w
   var playerName = undefined;
+  var stopTimer = false;
 
 
   function getName(){
@@ -139,9 +141,25 @@
 
   }
 
+  function countDown(){
+    if(!stopTimer){
+      var time = parseInt((document.getElementById("countDown").innerHTML),10);
+      if (time == 1){
+        document.getElementById("countDown").innerHTML = 0;
+        endGame();
+        return;
+      }
+      --time;
+      document.getElementById("countDown").innerHTML = time;
+      setTimeout(countDown, 1000);
+    }
+    else return;
+  }
+
   function start(){
     getName();
     document.getElementsByClassName('item')[questions[count].id].classList.add("currentlyAsked");
+    countDown();
     document.getElementById("generalInput").value = "";
     document.getElementById("startButton").classList.add("hidden");
     var elements = document.getElementsByClassName("ingameButton");
@@ -167,6 +185,7 @@
     }
     ++count;
     --questionsToGo;
+    document.getElementById('questionsLeft').innerHTML = questionsToGo;
     //console.log("DEBUG ID: " + questions[count].id)
     checkRosco();
   }
@@ -193,5 +212,8 @@
     count = 0;
     questions = backup();
     questionsToGo = questions.length;
+    stopTimer = false;
     document.getElementById("ranking").innerHTML = "";
+    document.getElementById("countDown").innerHTML = 130;
+    document.getElementById("questionsLeft").innerHTML = 27;
   }
