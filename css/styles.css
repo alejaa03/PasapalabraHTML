@@ -1,8 +1,18 @@
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+.questions h2{
+  height: 200px;
+}
+h1{
+  text-align: center;
+  font-size: 50px;
+}
 .hidden{
   display: none;
 }
 .ingameButton{
-
+  border-radius: 10px;
 }
 
 .timer li{
@@ -11,7 +21,7 @@
 }
 
 .ui{
-background-color: DodgerBlue;
+background: linear-gradient(to bottom right, #660066 0%, #ff00ff 100%);
 height: auto;
 
 
@@ -20,22 +30,27 @@ height: auto;
   text-align: center;
 
 }
-.letters li{
-  display: inline-block;
-  list-style: none;
-  padding: 20px;
-  margin: 20px;
-  background-color: #f1f1f1;
-  width: 90px;
-  height: 200px;
-  line-height: 140px;
+.letters li {
+    display: inline-block;
+    list-style: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px;
+    margin: 20px;
+    background-color: #f1f1f1;
+    width: 20px;
+    height: auto;
+    /* line-height: 140px; */
+    border-radius: 50%;
 }
 
 .letters .wrongAnswered{
+  transition: background-color 1s ease;
   background-color: red;
 }
 
 .letters .rightAnswered{
+  transition: background-color 1s ease;
   background-color: green;
 }
 
