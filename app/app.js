@@ -120,6 +120,10 @@
     for (var i = 0; i < elements.length; i++) {
       elements[i].classList.add("hidden");
     }
+    var ele = document.getElementsByClassName("item")
+    for (var i = 0; i < ele.length; i++) {
+      ele[i].classList.add("hidden");
+    }
     document.getElementById("playAgainButton").classList.remove("hidden");
     document.getElementById("generalInput").classList.add("hidden");
     results();
@@ -216,4 +220,8 @@
     document.getElementById("ranking").innerHTML = "";
     document.getElementById("countDown").innerHTML = 130;
     document.getElementById("questionsLeft").innerHTML = 27;
+    var ele = document.getElementsByClassName("item")
+    for (var i = 0; i < ele.length; i++) {
+      ele[i].classList.remove("hidden");
+    }
   }
