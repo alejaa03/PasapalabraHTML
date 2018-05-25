@@ -1,23 +1,59 @@
+
+
+
 *{
   font-family: 'Montserrat', sans-serif;
+  /*background: linear-gradient(to bottom, #00999966 0%, #00ff994f 2%);*/
 }
+
+input{
+  font-size: 40px;
+}
+
+.timer {
+    border-style: inset;
+    position: absolute;
+    top: 0;
+    right: 40px;
+    padding-right: 50px;
+    min-width: 100px;
+}
+.scoreboard li{
+  text-align: center;
+  vertical-align: middle;
+  list-style: none;
+  font-size: 40px;
+  margin-top: 50px;
+}
+
+.questions  {
+    min-height: 100px;
+    font-size: 20px;
+    text-align: center;
+}
+
 .questions h2{
-  height: 200px;
+
+    min-height: 120px;
+
 }
+
 h1{
   text-align: center;
   font-size: 50px;
 }
 .hidden{
-  display: none;
+  display: none !important;
 }
 .ingameButton{
   border-radius: 10px;
+  font-size: 40px;
 }
 
 .timer li{
   list-style: none;
   font-size: 40px;
+  text-align: center;
 }
 
 .ui{
@@ -28,6 +64,8 @@ height: auto;
 }
 .letters{
   text-align: center;
+  min-height: 300px;
+  padding: 36px;
 
 }
 .letters li {
@@ -46,12 +84,12 @@ height: auto;
 
 .letters .wrongAnswered{
   transition: background-color 1s ease;
-  background-color: red;
+  background: #ff3333;
 }
 
 .letters .rightAnswered{
   transition: background-color 1s ease;
-  background-color: green;
+  background-color: lightgreen;
 }
 
 .currentlyAsked{
@@ -59,8 +97,15 @@ height: auto;
   border: 5px solid transparent;
 }
 
+button{
+
+    border-radius: 10px;
+    font-size: 40px;
+
+}
+
 @keyframes blink2 {
   50% {
-    border-color: purple;
+    border-color: #1f0f0f;
   }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background: aliceblue">
 <head>
 	<meta charset="UTF-8">
 	<title>Pasapalabra</title>
@@ -9,6 +9,10 @@
 <body>
 	<header class="title">
 		<h1>Pasapalabra</h1>
+		<ul class="timer">
+			<li id="countDown">130</li>
+			<li id="questionsLeft">27</li>
+		</ul>
 	</header>
 	<article class="pasapalabra">
 		<div class="questions">
@@ -22,6 +26,11 @@
 			<button type="button" id="playAgainButton" class="endgameButton hidden" onclick="playAgain()">Play again!</button>
 		</div>
 	<div class="ui">
+		<div class="scoreboard">
+			<ul id="ranking">
+
+			</ul>
+		</div>
 		<ul class="letters">
 				<li class="item">A</li>
 				<li class="item">B</li>
@@ -52,15 +61,6 @@
 				<li class="item">Z</li>
 			</ul>
 		</div>
-		<div class="scoreboard">
-			<ul id="ranking">
-
-			</ul>
-		</div>
-		<ul class="timer">
-			<li id="countDown">130</li>
-			<li id="questionsLeft">27</li>
-		</ul>
 	</article>
 	<footer class="footer">
 		<h5></h5>
