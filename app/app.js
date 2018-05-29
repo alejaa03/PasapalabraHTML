@@ -126,6 +126,9 @@
     }
     document.getElementById("playAgainButton").classList.remove("hidden");
     document.getElementById("generalInput").classList.add("hidden");
+    document.getElementById("question").classList.add("hidden");
+    document.getElementById("letterList").classList.add("hidden");
+
     results();
     }
 
@@ -163,6 +166,7 @@
   function start(){
     getName();
     document.getElementsByClassName('item')[questions[count].id].classList.add("currentlyAsked");
+    document.getElementById("question").classList.remove("hidden");
     countDown();
     document.getElementById("generalInput").value = "";
     document.getElementById("startButton").classList.add("hidden");
@@ -206,6 +210,7 @@
     document.getElementById("playAgainButton").classList.add("hidden");
     document.getElementById("nameInput").classList.remove("hidden");
     document.getElementById("generalInput").classList.add("hidden");
+    document.getElementById("letterList").classList.remove("hidden");
     document.getElementById("question").innerHTML = "";
     document.getElementById("ranking").classList.add("hidden");
     for (var i = 0; i < document.getElementsByClassName('item').length; i++) {

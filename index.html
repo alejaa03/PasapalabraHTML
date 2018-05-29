@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="background: aliceblue">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Pasapalabra</title>
@@ -16,7 +16,7 @@
 	</header>
 	<article class="pasapalabra">
 		<div class="questions">
-			<h2 id="question"></h2>
+			<h2 id="question" class="hidden"></h2>
 			<input id="generalInput" class="hidden" type="text" placeholder="Enter your answer" value="">
 			<input id="nameInput" type="text" placeholder="Enter your name" value="">
 			<button type="button" id="startButton" onclick="start()">START!</button>
@@ -31,7 +31,7 @@
 
 			</ul>
 		</div>
-		<ul class="letters">
+		<ul class="letters" id="letterList">
 				<li class="item">A</li>
 				<li class="item">B</li>
 				<li class="item">C</li>
